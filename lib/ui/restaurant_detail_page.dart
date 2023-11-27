@@ -6,6 +6,7 @@ import 'package:restaurant_app/data/model/detail_restaurant.dart';
 import 'package:restaurant_app/provider/database_provider.dart';
 import 'package:restaurant_app/provider/detail_provider.dart';
 import 'package:restaurant_app/ui/add_review_page.dart';
+import 'package:http/http.dart' as http;
 
 class RestaurantDetailPage extends StatefulWidget {
   static const routeName = '/restaurant_detail';
@@ -635,7 +636,8 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<DetailProvider>(
       create: (_) => DetailProvider(
-          apiService: ApiService(), restaurantId: widget.restaurantId),
+          apiService: ApiService(http.Client()),
+          restaurantId: widget.restaurantId),
       child: _getRestaurantData(),
     );
   }

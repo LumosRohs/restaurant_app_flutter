@@ -38,7 +38,7 @@ class DatabaseProvider extends ChangeNotifier {
       _getFavorites();
     } catch (e) {
       _state = DBState.error;
-      _message = 'Error: $e';
+      _message = 'Failed to add favorite';
       notifyListeners();
     }
   }
@@ -54,7 +54,7 @@ class DatabaseProvider extends ChangeNotifier {
       _getFavorites();
     } catch (e) {
       _state = DBState.error;
-      _message = 'Error: $e';
+      _message = 'Failed to remove favorite';
       notifyListeners();
     }
   }

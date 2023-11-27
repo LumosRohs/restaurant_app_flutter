@@ -19,6 +19,7 @@ import 'package:restaurant_app/ui/restaurant_detail_page.dart';
 import 'package:restaurant_app/utils/background_service.dart';
 import 'package:restaurant_app/utils/notification_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
@@ -47,7 +48,8 @@ class MainApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => RestaurantProvider(apiService: ApiService()),
+          create: (_) =>
+              RestaurantProvider(apiService: ApiService(http.Client())),
         ),
         ChangeNotifierProvider(create: (_) => SchedulingProvider()),
         ChangeNotifierProvider(
@@ -82,7 +84,8 @@ class MainApp extends StatelessWidget {
           routes: {
             HomePage.routeName: (context) =>
                 ChangeNotifierProvider<RestaurantProvider>(
-                    create: (_) => RestaurantProvider(apiService: ApiService()),
+                    create: (_) => RestaurantProvider(
+                        apiService: ApiService(http.Client())),
                     child: const HomePage()),
             RestaurantDetailPage.routeName: (context) => RestaurantDetailPage(
                   restaurantId:
@@ -90,7 +93,8 @@ class MainApp extends StatelessWidget {
                 ),
             AddReviewPage.routeName: (context) =>
                 ChangeNotifierProvider<ReviewProvider>(
-                  create: (_) => ReviewProvider(apiService: ApiService()),
+                  create: (_) =>
+                      ReviewProvider(apiService: ApiService(http.Client())),
                   child: AddReviewPage(
                     restaurantId:
                         ModalRoute.of(context)?.settings.arguments as String,
