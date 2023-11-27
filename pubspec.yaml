@@ -1,0 +1,31 @@
+name: restaurant_app
+description: "Dicoding Submission"
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+
+dependencies:
+  android_alarm_manager_plus: ^3.0.3
+  flutter:
+    sdk: flutter
+  flutter_local_notifications: ^16.1.0
+  flutter_platform_widgets: ^6.0.2
+  google_fonts: ^6.1.0
+  http: ^1.1.0
+  intl: ^0.18.1
+  provider: ^6.1.1
+  rxdart: ^0.27.7
+  shared_preferences: ^2.2.2
+  sqflite: ^2.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/local_restaurant.json
