@@ -29,7 +29,6 @@ class _ListRestaurantPageState extends State<ListRestaurantPage> {
         return const Center(child: CircularProgressIndicator());
       } else if (state.state == ResultState.hasData) {
         return ListView.builder(
-          key: const Key('Restaurant List'),
           shrinkWrap: true,
           itemCount: state.result.length,
           itemBuilder: (context, index) {
